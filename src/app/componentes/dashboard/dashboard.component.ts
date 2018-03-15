@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../servicios/auth.service';
+
 declare var jQuery:any;
 declare var $:any;
 
@@ -8,8 +10,15 @@ declare var $:any;
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  
+  public isLogin: boolean;
+  public nombreUsuario: string;
+  public emailUsuario: string;
+  public fotoUsuario: string;
 
-  constructor() { }
+  constructor(
+    public authService: AuthService
+  ) { }
 
   ngOnInit() {
     $('.button-collapse').sideNav();
@@ -17,6 +26,20 @@ export class DashboardComponent implements OnInit {
     $('.collapsible').collapsible();
     
     $('select').material_select(); 
+    this.authService.getAuth().subscribe( auth => {
+      if (auth) {
+        this.isLogin = true;
+        this.nombreUsuario = auth.displayName;
+        this.emailUsuario = auth.email;
+        this.fotoUsuario = auth.photoURL;
+      } else {
+        this.isLogin = false;
+      }
+    });
+  }
+
+  onClickLogout() {
+    this.authService.logout();
   }
   
 }
