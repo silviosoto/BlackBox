@@ -15,7 +15,8 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth'; 
 import {AuthService} from './servicios/auth.service';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
-
+import {AuthGuard} from './guards/auth.guard';
+import { GestionUsuarioComponent } from './componentes/gestion-usuario/gestion-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
     NavComponent,
     NotfoundpageComponent,
     DashboardComponent,
+    GestionUsuarioComponent,
   
   ],
   imports: [
@@ -33,7 +35,7 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
     AngularFireModule.initializeApp(environment.firebaseConfig)
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

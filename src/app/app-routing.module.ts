@@ -5,9 +5,11 @@ import { NotfoundpageComponent } from './componentes/notfoundpage/notfoundpage.c
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import {NavComponent} from './componentes/nav/nav.component';
 
+import {AuthGuard} from './guards/auth.guard';
+
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotfoundpageComponent}
 ];
 
