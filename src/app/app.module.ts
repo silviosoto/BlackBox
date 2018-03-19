@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
+import {FlashMessagesModule} from 'angular2-flash-messages';
+import {FlashMessagesService} from 'angular2-flash-messages';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { NavComponent } from './componentes/nav/nav.component';
@@ -36,10 +39,10 @@ import { NavdashboardComponent } from './componentes/navdashboard/navdashboard.c
     AppRoutingModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FlashMessagesModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard,FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
