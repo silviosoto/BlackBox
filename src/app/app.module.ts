@@ -17,6 +17,8 @@ import {AuthService} from './servicios/auth.service';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import {AuthGuard} from './guards/auth.guard';
 import { GestionUsuarioComponent } from './componentes/gestion-usuario/gestion-usuario.component';
+import { NavdashboardComponent } from './componentes/navdashboard/navdashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,8 @@ import { GestionUsuarioComponent } from './componentes/gestion-usuario/gestion-u
     NotfoundpageComponent,
     DashboardComponent,
     GestionUsuarioComponent,
+    NavdashboardComponent,
+
   
   ],
   imports: [
